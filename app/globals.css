@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  cursor: url('/kursor/cursor.png') 16 16, auto;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+a, button, .clickable {
+  cursor: url('/kursor/click.png') 16 16, pointer;
+}
+
+.default-cursor {
+  cursor: auto;
+}
+
+/* Neo-brutalism Shadow */
+.neo-shadow {
+  box-shadow: 5px 5px 0px 0px #000000;
+  transition: all 0.2s ease;
+}
+
+.neo-shadow:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px 0px #000000;
+}
+
+.neo-shadow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000000;
+}
