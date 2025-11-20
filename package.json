@@ -2,12 +2,11 @@
   "name": "portfolio-full",
   "version": "1.0.0",
    "private": true,
-   "scripts": {  "start": "next start",
+"scripts": {
+  "start": "next start",
   "build": "next build",
   "test": "react-scripts test",
-  "export": "next export",
-  "predeploy": "npm run build", 
-  "deploy": "gh-pages -d out"
+  "export": "next export"
 },
   "dependencies": {
     "framer-motion": "10.16.4",
@@ -20,7 +19,6 @@
   },
   "devDependencies": {
     "autoprefixer": "10.4.16",
-    "gh-pages": "^6.3.0",
     "postcss": "8.4.31",
     "tailwindcss": "3.4.1"
   }
