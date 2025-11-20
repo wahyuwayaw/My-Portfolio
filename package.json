@@ -1,10 +1,8 @@
 {
   "name": "portfolio-full",
   "version": "1.0.0",
-  "private": true,
-  "homepage": "https://wahyuwayaw.github.io/My-portfolio",
- "scripts": {
-  "start": "next start",
+   "private": true,
+   "scripts": {  "start": "next start",
   "build": "next build",
   "test": "react-scripts test",
   "export": "next export",
