@@ -111,7 +111,7 @@ export const translations = {
       response: "Waktu respon: Biasanya dalam 24 jam",
     },
     footer: {
-      text: "Dibuat dengan ❤️ oleh Wahyu Sugiarto",
+      text: "Wahyu Sugiarto",
     }
   },
   en: {
