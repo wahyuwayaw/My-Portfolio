@@ -226,7 +226,7 @@ export const translations = {
       response: "Response time: Usually within 24 hours",
     },
     footer: {
-      text: "Made with ❤️ by Wahyu Sugiarto",
+      text: "Wahyu Sugiarto",
     }
   }
 };
