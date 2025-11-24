@@ -15,7 +15,8 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 4 L4 24 L10 18 L14 28 L18 26 L14 16 L20 16 Z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 4 4, auto;
+  cursor: url('/kursor/cursor1-optimized.svg'), auto;
+  cursor: -webkit-image-set(url('/kursor/cursor1-optimized.svg') 1x) 0 0, auto;
 }
 
 h1, h2, h3, .font-heading {
@@ -23,7 +24,8 @@ h1, h2, h3, .font-heading {
 }
 
 a, button, .clickable {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 4 C8 4 8 14 8 14 L4 14 L12 22 L20 14 L16 14 C16 14 16 4 16 4 Z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 12 12, pointer;
+  cursor: url('/kursor/click1.png') 12 12, pointer !important;
+  cursor: -webkit-image-set(url('/kursor/click1.png') 1x) 12 12, pointer !important;
 }
 
 .default-cursor {
@@ -44,4 +46,55 @@ a, button, .clickable {
 .neo-shadow:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px 0px #000000;
+}
+
+/* Dark Mode Neo Shadow */
+.dark .neo-shadow {
+  box-shadow: 5px 5px 0px 0px #10b981; /* Emerald shadow for dark mode */
+}
+
+.dark .neo-shadow:hover {
+  box-shadow: 7px 7px 0px 0px #10b981;
+}
+
+.dark .neo-shadow:active {
+  box-shadow: 2px 2px 0px 0px #10b981;
+}
+
+/* Particle Animation */
+@keyframes particle {
+  0% { transform: translateY(0) opacity(1); }
+  100% { transform: translateY(100px) opacity(0); }
+}
+
+.animate-particle {
+  animation: particle 1s linear forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981; /* Emerald-500 */
+  border-radius: 5px;
+  border: 2px solid #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border: 2px solid #0f172a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059669; /* Emerald-600 */
 }

@@ -1,57 +1,53 @@
 "use client";
 import { motion } from "framer-motion";
+import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
+import { useLanguage } from "./LanguageProvider";
+import { translations } from "../data/translations";
 
 export default function Skills() {
+  const { language } = useLanguage();
+  const t = translations[language].skills;
+
   const skillsData = [
+    { name: "HTML", emoji: "🌐" },
+    { name: "CSS", emoji: "🎨" },
+    { name: "JavaScript", emoji: "⚡" },
+    { name: "React", emoji: "⚛️" },
+    { name: "Next.js", emoji: "🚀" },
+    { name: "Tailwind", emoji: "💅" },
+    { name: "Node.js", emoji: "🟢" },
+    { name: "Git", emoji: "📦" },
+    { name: "Linux", emoji: "🐧" },
     { name: "Python", emoji: "🐍" },
-    { name: "React JS", emoji: "⚛️" },
-    { name: "Linux / WSL", emoji: "🐧" },
-    { name: "Networking", emoji: "🌐" },
-    { name: "Bot Auto", emoji: "🤖" },
-    { name: "IT Support", emoji: "🛠️" },
+    { name: "Networking", emoji: "📡" },
+    { name: "Hardware", emoji: "🖥️" },
   ];
 
   return (
     <section id="skills" className="max-w-5xl mx-auto px-6 py-20">
-      <motion.h3 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.5 }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl font-bold mb-10 text-center font-heading"
-      >
-          Skils & Tools
-      </motion.h3>
+      <ScrollReveal>
+        <h3 className="text-3xl font-bold mb-10 text-center font-heading dark:text-white">
+            {t.title}
+        </h3>
+      </ScrollReveal>
       
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {skillsData.map((skill, index) => (
-          <motion.div 
-            key={index}
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ 
-              duration: 0.5, 
-              delay: index * 0.08,
-              ease: "easeOut"
-            }}
-            whileHover={{ 
-              y: -8, 
-              scale: 1.05,
-              boxShadow: "7px 7px 0px 0px #000",
-              transition: { duration: 0.2 }
-            }}
-            className="bg-yellow-50 hover:bg-yellow-100 border-2 border-black p-4 rounded-lg neo-shadow text-center cursor-default transition-colors"
+          <ScrollReveal 
+            key={index} 
+            delay={index * 0.05}
           >
-            <motion.div 
-              whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl mb-2"
-            >
-              {skill.emoji}
-            </motion.div>
-            <h4 className="font-bold">{skill.name}</h4>
-          </motion.div>
+            <TiltCard>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="bg-white dark:bg-slate-800 border-2 border-black dark:border-white p-6 rounded-xl neo-shadow flex flex-col items-center justify-center gap-3 hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors cursor-pointer h-full"
+              >
+                <span className="text-4xl">{skill.emoji}</span>
+                <span className="font-bold font-heading dark:text-white">{skill.name}</span>
+              </motion.div>
+            </TiltCard>
+          </ScrollReveal>
         ))}
       </div>
     </section>
