@@ -1,42 +1,52 @@
 "use client";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-export default function ScrollReveal({ 
-  children, 
-  delay = 0, 
+/**
+ * Reveal on scroll. Fail-safe: force visible after short timeout so
+ * Lenis/IO edge cases never leave the page blank (opacity: 0 forever).
+ */
+export default function ScrollReveal({
+  children,
+  delay = 0,
   direction = "up",
-  className = ""
+  className = "",
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.05,
+    // generous margin so cards near fold still trigger with smooth-scroll
+    margin: "120px 0px 120px 0px",
+  });
+  const [forceVisible, setForceVisible] = useState(false);
 
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
-      x: direction === "left" ? 40 : direction === "right" ? -40 : 0,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-    },
-  };
+  useEffect(() => {
+    const t = setTimeout(() => setForceVisible(true), 700);
+    return () => clearTimeout(t);
+  }, []);
+
+  const show = isInView || forceVisible;
+
+  const offsetY = direction === "up" ? 28 : direction === "down" ? -28 : 0;
+  const offsetX = direction === "left" ? 28 : direction === "right" ? -28 : 0;
 
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={variants}
+      initial={{ opacity: 0, y: offsetY, x: offsetX }}
+      animate={
+        show
+          ? { opacity: 1, y: 0, x: 0 }
+          : { opacity: 0, y: offsetY, x: offsetX }
+      }
       transition={{
-        duration: 0.6,
-        delay: delay,
+        duration: 0.45,
+        delay: Math.min(delay, 0.25),
         ease: "easeOut",
       }}
       className={className}
+      style={{ willChange: "opacity, transform" }}
     >
       {children}
     </motion.div>

@@ -37,9 +37,14 @@ export default function About() {
             <p className="mb-4 text-gray-700 dark:text-gray-300">
               {t.description2}
             </p>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p className="mb-4 text-gray-700 dark:text-gray-300">
               {t.description3}
             </p>
+            {t.description4 && (
+              <p className="text-gray-700 dark:text-gray-300">
+                {t.description4}
+              </p>
+            )}
             
             <div className="mt-6 bg-gray-900 dark:bg-black rounded-lg p-4 border-2 border-black dark:border-emerald-500 text-sm font-mono text-green-400 shadow-lg">
               <p>$ current_status: "{t.status.current}"</p>

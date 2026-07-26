@@ -2,7 +2,6 @@ import "./globals.css";
 import { Inter, Space_Grotesk } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import CursorTrail from "./components/CursorTrail";
 import SmoothScroll from "./components/SmoothScroll";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { LanguageProvider } from "./components/LanguageProvider";
@@ -14,8 +13,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Wahyu Sugiarto | Portfolio",
-  description: "Portfolio of Wahyu Sugiarto - AI Automation & Web Developer",
+  title: "Wahyu Sugiarto | AI Automation & Web Developer",
+  description:
+    "Portfolio Wahyu Sugiarto — mahasiswa Teknik Informatika Universitas Pamulang semester 7. AI automation, web development, dan IT Support.",
 };
 
 export default function RootLayout({ children }) {
@@ -25,7 +25,6 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <LanguageProvider>
             <SmoothScroll />
-            <CursorTrail />
             <Navbar />
             <main className="min-h-screen pt-16">
               {children}

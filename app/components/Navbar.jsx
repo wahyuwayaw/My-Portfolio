@@ -28,6 +28,9 @@ export default function Navbar() {
       <a href="#skills" onClick={(e) => { e.preventDefault(); handleLinkClick('#skills'); }} className="hover:text-emerald-600 dark:text-gray-200 dark:hover:text-emerald-400 font-medium transition-colors cursor-pointer">
         {t.skills}
       </a>
+      <a href="#experience" onClick={(e) => { e.preventDefault(); handleLinkClick('#experience'); }} className="hover:text-emerald-600 dark:text-gray-200 dark:hover:text-emerald-400 font-medium transition-colors cursor-pointer">
+        {t.experience}
+      </a>
       <a href="#projects" onClick={(e) => { e.preventDefault(); handleLinkClick('#projects'); }} className="hover:text-emerald-600 dark:text-gray-200 dark:hover:text-emerald-400 font-medium transition-colors cursor-pointer">
         {t.projects}
       </a>

@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
-import confetti from "canvas-confetti";
 import { useLanguage } from "./LanguageProvider";
 import { translations } from "../data/translations";
 
@@ -24,27 +23,6 @@ export default function Hero({ onNavClick }) {
 
     return () => typed.destroy();
   }, [language, t.role]); // Re-run effect when language changes
-
-  const triggerConfetti = () => {
-    const duration = 3 * 1000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-    const randomInRange = (min, max) => Math.random() * (max - min) + min;
-
-    const interval = setInterval(function() {
-      const timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-
-      const particleCount = 50 * (timeLeft / duration);
-      // since particles fall down, start a bit higher than random
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-    }, 250);
-  };
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center px-6 pt-20 pb-10 relative overflow-hidden">
@@ -137,7 +115,6 @@ export default function Hero({ onNavClick }) {
             whileTap={{ scale: 0.98 }}
             href="/kursor/cv.pdf"
             download="CV_Wahyu_Sugiarto.pdf"
-            onClick={triggerConfetti}
             className="bg-yellow-100 dark:bg-yellow-900/50 border-2 border-black dark:border-white text-black dark:text-white font-bold py-3 px-8 rounded-lg neo-shadow flex items-center justify-center gap-2 transition-all"
           >
             {t.ctaCV}

@@ -21,7 +21,7 @@ export default function Projects() {
       <ScrollReveal>
         <h3 className="text-3xl font-bold mb-10 flex items-center gap-3 dark:text-white">
           <span className="bg-emerald-500 text-white px-3 py-1 text-xl transform rotate-2 rounded border-2 border-black dark:border-white">
-            02.
+            03.
           </span>
           {t.title}
         </h3>
@@ -49,9 +49,19 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover grayscale-[35%] contrast-[1.05] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-out"
                   />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+
+                  {/* shine sweep — kilau diagonal nyapu pas hover */}
+                  <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
+                    <div className="absolute -inset-y-8 -left-1/3 w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/45 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[900ms] ease-out" />
+                  </div>
+
+                  {/* colored glow ring pas hover */}
+                  <div className="pointer-events-none absolute inset-0 z-10 ring-0 group-hover:ring-4 ring-inset ring-emerald-400/70 transition-all duration-300" />
+
+                  {/* overlay + CTA */}
+                  <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-5">
                     <span className="text-white font-bold border-2 border-white px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                       {t.viewProject}
                     </span>

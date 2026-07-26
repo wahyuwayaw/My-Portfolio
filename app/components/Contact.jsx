@@ -63,7 +63,7 @@ export default function Contact() {
     <section id="contact" className="max-w-4xl mx-auto px-6 py-20">
       <ScrollReveal className="text-center mb-12">
         <h3 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-3 dark:text-white">
-          <span className="bg-yellow-200 dark:bg-yellow-900/50 text-black dark:text-white px-3 py-1 text-xl transform -rotate-2 rounded border-2 border-black dark:border-white">03.</span>
+          <span className="bg-yellow-200 dark:bg-yellow-900/50 text-black dark:text-white px-3 py-1 text-xl transform -rotate-2 rounded border-2 border-black dark:border-white">04.</span>
           {t.title}
         </h3>
         <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">

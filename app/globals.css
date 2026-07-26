@@ -61,14 +61,20 @@ a, button, .clickable {
   box-shadow: 2px 2px 0px 0px #10b981;
 }
 
-/* Particle Animation */
-@keyframes particle {
-  0% { transform: translateY(0) opacity(1); }
-  100% { transform: translateY(100px) opacity(0); }
+/* Particle Animation (cursor green dots) */
+@keyframes particleFade {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(18px) scale(0.2);
+    opacity: 0;
+  }
 }
 
 .animate-particle {
-  animation: particle 1s linear forwards;
+  animation: particleFade 0.8s ease-out forwards;
 }
 
 /* Custom Scrollbar */

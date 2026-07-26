@@ -3,13 +3,14 @@ export const translations = {
     navbar: {
       about: "Tentang",
       skills: "Keahlian",
+      experience: "Pengalaman",
       projects: "Proyek",
       contact: "Kontak",
     },
     hero: {
       greeting: "👋 Halo Semua, Saya",
-      role: ["AI Automation Developer", "Web Developer", "IT Support", "Full Stack Developer"],
-      description: "Saya Wahyu Sugiarto, seorang mahasiswa Teknik Informatika UNPAM yang memiliki ketertarikan besar pada AI Automation, Web Development, Networking, dan IT Support.",
+      role: ["AI Automation & Web Developer", "AI Agent Builder", "IT Support"],
+      description: "Saya Wahyu Sugiarto, mahasiswa semester 7 Teknik Informatika di Universitas Pamulang. Fokus saya di AI automation dan web development, dengan bekal IT Support untuk troubleshooting PC/laptop dan perangkat.",
       ctaProject: "🚀 Lihat Proyek",
       ctaCV: "📄 Unduh CV",
     },
@@ -17,17 +18,47 @@ export const translations = {
       title: "Tentang Saya",
       intro: "Perkenalkan, saya",
       name: "Wahyu Sugiarto",
-      description1: "seorang mahasiswa aktif Semester 5 Teknik Informatika yang antusias dengan dunia teknologi, khususnya web development, automasi, dan IT support.",
-      description2: "Saya terbiasa bekerja menggunakan Linux/WSL, membangun aplikasi sederhana, hingga membuat bot otomatis untuk menyelesaikan berbagai task seperti testnet, scraping, dan repetitive job lainnya. Selain itu, saya juga berpengalaman dalam instalasi jaringan LAN, troubleshooting perangkat, dan konfigurasi komputer/laptop.",
-      description3: "Saat ini, saya terus mengembangkan kemampuan di bidang Fullstack Web, Automation, dan DevOps kecil, sambil membangun berbagai proyek pribadi.",
+      description1: "mahasiswa semester 7 Teknik Informatika di Universitas Pamulang.",
+      description2: "Saya fokus di AI automation dan web development. Dalam kerja sehari-hari, saya terbiasa memanfaatkan AI sebagai asisten kerja — untuk riset, debugging, otomasi, dan mempercepat development — sambil tetap merancang, membangun, dan menguji sistem secara mandiri.",
+      description3: "Saya membangun AI agent dan workflow otomasi yang benar-benar dipakai, bukan sekadar eksperimen. Di sisi web, saya terbiasa mengerjakan aplikasi end-to-end, dari frontend hingga integrasi backend/API.",
+      description4: "Selain itu, saya juga berpengalaman di bidang IT Support — mulai dari troubleshooting PC/laptop, instalasi dan konfigurasi perangkat, hingga perbaikan dan perawatan hardware untuk memastikan sistem tetap berjalan stabil.",
       status: {
         current: "Belajar & Membangun",
         location: "Depok Selatan, ID",
-        interests: ["AI", "Otomasi", "Web"],
+        interests: ["AI Agents", "Otomasi", "Web", "IT Support"],
       }
     },
     skills: {
       title: "Keahlian & Alat",
+    },
+    experience: {
+      title: "Pengalaman & Aktivitas",
+      items: [
+        {
+          period: "2025 — Sekarang",
+          title: "AI Agent & Automation",
+          place: "Personal Project",
+          description: "Men-setup dan mengoperasikan AI agent seperti Nous Hermes untuk workflow development, membangun pipeline otomatisasi laporan, serta berbagai bot untuk task otomatis (scraping, repetitive job).",
+        },
+        {
+          period: "April 2024 — Agustus 2024",
+          title: "Teknisi Lapangan",
+          place: "PT Mega Royal IT Comindo",
+          description: "Berhasil melakukan instalasi lebih dari 30 titik kabel LAN untuk proyek Indosat di kawasan Monas. Melakukan pengecekan dan maintenance ringan terhadap perangkat jaringan, serta bekerja dalam tim teknis untuk memastikan sistem jaringan berjalan stabil.",
+        },
+        {
+          period: "Juni 2021 — Juni 2022",
+          title: "Admin Toko Online",
+          place: "Deanz Collection",
+          description: "Mengelola pesanan, stok barang, dan layanan pelanggan melalui chat. Membuat laporan keuangan harian hingga bulanan menggunakan Excel dan Google Sheets.",
+        },
+        {
+          period: "Agustus 2023 — Sekarang",
+          title: "Mahasiswa Teknik Informatika",
+          place: "Universitas Pamulang",
+          description: "Saat ini semester 7 — fokus di AI automation dan web development. Aktif membangun proyek berbasis praktik, sistem web, dan otomasi.",
+        }
+      ],
     },
     projects: {
       title: "Proyek",
@@ -36,7 +67,7 @@ export const translations = {
       showAll: "Lihat Semua Proyek",
       showLess: "Sembunyikan",
       items: [
-        {
+                                {
           id: "absensi-face-api",
           title: "Sistem Absensi & Penggajian",
           description: "Aplikasi web untuk manajemen karyawan dengan fitur pengenalan wajah dan lokasi GPS.",
@@ -118,13 +149,14 @@ export const translations = {
     navbar: {
       about: "About",
       skills: "Skills",
+      experience: "Experience",
       projects: "Projects",
       contact: "Contact",
     },
     hero: {
       greeting: "👋 Hello Everyone, I am",
-      role: ["AI Automation Developer", "Web Developer", "IT Support", "Full Stack Developer"],
-      description: "I am Wahyu Sugiarto, an Informatics Engineering student at UNPAM with a strong interest in AI Automation, Web Development, Networking, and IT Support.",
+      role: ["AI Automation & Web Developer", "AI Agent Builder", "IT Support"],
+      description: "I am Wahyu Sugiarto, a 6th-semester Informatics Engineering student at Universitas Pamulang. I focus on AI automation and web development, with IT Support skills for PC/laptop troubleshooting and device setup.",
       ctaProject: "🚀 View Projects",
       ctaCV: "📄 Download CV",
     },
@@ -132,17 +164,47 @@ export const translations = {
       title: "About Me",
       intro: "Let me introduce myself, I am",
       name: "Wahyu Sugiarto",
-      description1: "an active 5th-semester Informatics Engineering student enthusiastic about technology, especially web development, automation, and IT support.",
-      description2: "I am accustomed to working with Linux/WSL, building simple applications, and creating automated bots to handle various tasks such as testnets, scraping, and other repetitive jobs. Additionally, I have experience in LAN network installation, device troubleshooting, and computer/laptop configuration.",
-      description3: "Currently, I am continuously developing my skills in Fullstack Web, Automation, and small-scale DevOps while building various personal projects.",
+      description1: "a 6th-semester Informatics Engineering student at Universitas Pamulang.",
+      description2: "I focus on AI automation and web development. In day-to-day work, I use AI as a working assistant — for research, debugging, automation, and faster development — while still designing, building, and testing systems myself.",
+      description3: "I build AI agents and automation workflows that are actually used, not just experiments. On the web side, I work end-to-end — from frontend to backend/API integration.",
+      description4: "I also have IT Support experience — from PC/laptop troubleshooting and device installation/configuration to hardware maintenance to keep systems running stably.",
       status: {
         current: "Learning & Building",
         location: "South Depok, ID",
-        interests: ["AI", "Automation", "Web"],
+        interests: ["AI Agents", "Automation", "Web", "IT Support"],
       }
     },
     skills: {
       title: "Skills & Tools",
+    },
+    experience: {
+      title: "Experience & Activities",
+      items: [
+        {
+          period: "2025 — Present",
+          title: "AI Agent & Automation",
+          place: "Personal Project",
+          description: "Setting up and operating AI agents such as Nous Hermes for development workflows, building automated reporting pipelines, and various bots for automated tasks (scraping, repetitive jobs).",
+        },
+        {
+          period: "April 2024 — August 2024",
+          title: "Field Technician",
+          place: "PT Mega Royal IT Comindo",
+          description: "Installed more than 30 LAN cable points for an Indosat project around Monas. Performed basic network device checks and light maintenance, and worked with the technical team to keep the network stable.",
+        },
+        {
+          period: "June 2021 — June 2022",
+          title: "Online Store Admin",
+          place: "Deanz Collection",
+          description: "Managed orders, inventory, and customer service via chat. Created daily to monthly financial reports using Excel and Google Sheets.",
+        },
+        {
+          period: "August 2023 — Present",
+          title: "Informatics Engineering Student",
+          place: "Universitas Pamulang",
+          description: "Currently in 7th semester — focusing on AI automation and web development. Actively building practice-based projects, web systems, and automation.",
+        }
+      ],
     },
     projects: {
       title: "Projects",
@@ -151,7 +213,7 @@ export const translations = {
       showAll: "Show All Projects",
       showLess: "Show Less",
       items: [
-        {
+                                {
           id: "absensi-face-api",
           title: "Attendance & Payroll System",
           description: "Web application for employee management with face recognition and GPS location features.",

@@ -1,5 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiPython,
+  SiLinux,
+  SiGit,
+  SiMysql,
+} from "react-icons/si";
+import { Bot, Workflow, Network, Cpu } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import TiltCard from "./TiltCard";
 import { useLanguage } from "./LanguageProvider";
@@ -10,18 +25,22 @@ export default function Skills() {
   const t = translations[language].skills;
 
   const skillsData = [
-    { name: "HTML", emoji: "🌐" },
-    { name: "CSS", emoji: "🎨" },
-    { name: "JavaScript", emoji: "⚡" },
-    { name: "React", emoji: "⚛️" },
-    { name: "Next.js", emoji: "🚀" },
-    { name: "Tailwind", emoji: "💅" },
-    { name: "Node.js", emoji: "🟢" },
-    { name: "Git", emoji: "📦" },
-    { name: "Linux", emoji: "🐧" },
-    { name: "Python", emoji: "🐍" },
-    { name: "Networking", emoji: "📡" },
-    { name: "Hardware", emoji: "🖥️" },
+    { name: "AI Agents", Icon: Bot, className: "text-emerald-600 dark:text-emerald-400" },
+    { name: "Automation", Icon: Workflow, className: "text-purple-600 dark:text-purple-400" },
+    { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+    { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+    { name: "React", Icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", Icon: SiNextdotjs, className: "text-black dark:text-white" },
+    { name: "Tailwind", Icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+    { name: "Python", Icon: SiPython, color: "#3776AB" },
+    { name: "Linux", Icon: SiLinux, className: "text-black dark:text-white" },
+    { name: "Git", Icon: SiGit, color: "#F05032" },
+    { name: "MySQL", Icon: SiMysql, color: "#4479A1" },
+    { name: "HTML", Icon: SiHtml5, color: "#E34F26" },
+    { name: "CSS", Icon: SiCss3, color: "#1572B6" },
+    { name: "Networking", Icon: Network, className: "text-sky-600 dark:text-sky-400" },
+    { name: "Hardware", Icon: Cpu, className: "text-gray-700 dark:text-gray-300" },
   ];
 
   return (
@@ -31,11 +50,11 @@ export default function Skills() {
             {t.title}
         </h3>
       </ScrollReveal>
-      
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {skillsData.map((skill, index) => (
-          <ScrollReveal 
-            key={index} 
+          <ScrollReveal
+            key={index}
             delay={index * 0.05}
           >
             <TiltCard>
@@ -43,7 +62,11 @@ export default function Skills() {
                 whileHover={{ scale: 1.05 }}
                 className="bg-white dark:bg-slate-800 border-2 border-black dark:border-white p-6 rounded-xl neo-shadow flex flex-col items-center justify-center gap-3 hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors cursor-pointer h-full"
               >
-                <span className="text-4xl">{skill.emoji}</span>
+                <skill.Icon
+                  size={40}
+                  className={skill.className}
+                  style={skill.color ? { color: skill.color } : undefined}
+                />
                 <span className="font-bold font-heading dark:text-white">{skill.name}</span>
               </motion.div>
             </TiltCard>
