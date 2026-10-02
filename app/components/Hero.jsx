@@ -176,12 +176,41 @@ export default function Hero({ onNavClick }) {
         >
           <span ref={typedRef} className="text-emerald-600 dark:text-emerald-400"></span>
         </motion.h2>
+
+        <div aria-hidden="true" className="mx-auto mb-7 grid max-w-md grid-cols-2 gap-3 md:hidden">
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, -5, 0], rotate: [-1, 0, -1] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            className="rounded-xl border-2 border-slate-800 bg-slate-950 p-3 text-left text-white shadow-[4px_4px_0_rgba(16,185,129,0.65)] dark:border-emerald-300/60"
+          >
+            <div className="mb-2 flex items-center justify-between gap-1">
+              <span className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-300"><Workflow size={13} />{showcaseCopy.automation}</span>
+              <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-emerald-400" />
+            </div>
+            <div className="h-1 overflow-hidden rounded-full bg-slate-700">
+              <motion.div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-300" animate={reduceMotion ? { width: "70%" } : { width: ["32%", "82%", "55%"] }} transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }} />
+            </div>
+            <p className="mt-1.5 truncate text-[9px] text-slate-400">{showcaseCopy.running}</p>
+          </motion.div>
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, 5, 0], rotate: [1, 0, 1] }}
+            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
+            className="rounded-xl border-2 border-emerald-700/30 bg-white/90 p-3 text-left shadow-[4px_4px_0_rgba(59,130,246,0.36)] backdrop-blur dark:border-emerald-300/40 dark:bg-slate-900/90"
+          >
+            <div className="mb-2 flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-slate-800 dark:text-white"><Sparkles size={13} className="text-emerald-500" />{showcaseCopy.stack}</div>
+            <div className="flex flex-wrap gap-1 text-[8px] font-bold">
+              <span className="rounded bg-emerald-100 px-1.5 py-1 text-emerald-900">React</span>
+              <span className="rounded bg-cyan-100 px-1.5 py-1 text-cyan-900">Next.js</span>
+              <span className="rounded bg-violet-100 px-1.5 py-1 text-violet-900">AI</span>
+            </div>
+          </motion.div>
+        </div>
         
         <motion.p 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={reduceMotion ? { duration: 0 } : { duration: 0.6, delay: 0.52, ease: [0.22, 1, 0.36, 1] }}
-          className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-10 text-lg leading-relaxed border-l-4 border-black dark:border-emerald-500 pl-4 bg-white/50 dark:bg-slate-800/50 py-2"
+          className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-8 md:mb-10 text-base md:text-lg leading-relaxed border-l-4 border-black dark:border-emerald-500 pl-4 bg-white/50 dark:bg-slate-800/50 py-2"
         >
           {t.description}
         </motion.p>
@@ -227,7 +256,7 @@ export default function Hero({ onNavClick }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: reduceMotion ? 0 : [0, 7, 0] }}
           transition={reduceMotion ? { duration: 0 } : { opacity: { delay: 1.2 }, y: { duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: 1.2 } }}
-          className="absolute bottom-7 left-0 right-0 flex flex-col items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400"
+          className="relative mt-9 flex flex-col items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 md:absolute md:bottom-7 md:left-0 md:right-0 md:mt-0"
         >
           <span>{language === "id" ? "Jelajahi" : "Explore"}</span>
           <span className="h-9 w-5 rounded-full border-2 border-current p-1">
