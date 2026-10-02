@@ -1,4 +1,5 @@
 "use client";
+import { motion, useReducedMotion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import { useLanguage } from "./LanguageProvider";
 import { translations } from "../data/translations";
@@ -6,6 +7,7 @@ import { translations } from "../data/translations";
 export default function About() {
   const { language } = useLanguage();
   const t = translations[language].about;
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="about" className="max-w-5xl mx-auto px-6 py-20">
@@ -16,9 +18,14 @@ export default function About() {
           className="relative group mx-auto md:mx-0"
         >
           <div className="absolute inset-0 bg-yellow-200 dark:bg-yellow-900/50 border-2 border-black dark:border-white rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform"></div>
-          <div className="relative bg-white dark:bg-slate-800 border-2 border-black dark:border-white rounded-2xl overflow-hidden neo-shadow h-80 w-72 flex items-center justify-center">
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, -8, 0], rotate: [0, 0.5, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={reduceMotion ? undefined : { rotate: 2, scale: 1.02 }}
+            className="relative bg-white dark:bg-slate-800 border-2 border-black dark:border-white rounded-2xl overflow-hidden neo-shadow h-80 w-72 flex items-center justify-center"
+          >
             <img src="/wahyu.jpeg" alt="Wahyu Sugiarto" className="w-full h-full object-cover" />
-          </div>
+          </motion.div>
         </ScrollReveal>
         
         <ScrollReveal 
@@ -49,7 +56,7 @@ export default function About() {
             <div className="mt-6 bg-gray-900 dark:bg-black rounded-lg p-4 border-2 border-black dark:border-emerald-500 text-sm font-mono text-green-400 shadow-lg">
               <p>$ current_status: "{t.status.current}"</p>
               <p>$ location: "{t.status.location}"</p>
-              <p>$ interests: {JSON.stringify(t.status.interests)}</p>
+              <p>$ interests: {JSON.stringify(t.status.interests)}<motion.span aria-hidden="true" animate={reduceMotion ? undefined : { opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }} className="ml-1 inline-block h-4 w-2 translate-y-0.5 bg-emerald-400" /></p>
             </div>
           </div>
         </ScrollReveal>

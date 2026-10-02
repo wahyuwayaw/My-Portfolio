@@ -1,16 +1,16 @@
 "use client";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
-import TiltCard from "./TiltCard";
 import { useLanguage } from "./LanguageProvider";
 import { translations } from "../data/translations";
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const { language } = useLanguage();
+  const reduceMotion = useReducedMotion();
   const t = translations[language].projects;
   const projects = t.items;
 
@@ -29,40 +29,41 @@ export default function Projects() {
 
       {/* GRID PORTRAIT */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <AnimatePresence mode="popLayout" initial={false}>
         {displayedProjects.map((project, index) => (
-          <ScrollReveal 
+          <motion.div
             key={project.id} 
-            delay={index * 0.1} 
+            layout
+            initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={reduceMotion ? undefined : { opacity: 0, y: -10, scale: 0.96 }}
+            transition={{ duration: 0.4, delay: reduceMotion ? 0 : Math.min(index * 0.08, 0.24), ease: [0.22, 1, 0.36, 1], layout: { duration: 0.35 } }}
             className="h-full"
           >
-            <TiltCard className="h-full">
-              <motion.div
-                whileHover={{
-                  y: -10,
-                  transition: { duration: 0.3 },
-                }}
-                className="bg-white dark:bg-slate-800 border-2 border-black dark:border-white rounded-2xl overflow-hidden neo-shadow flex flex-col h-full group"
-              >
+            <ScrollReveal delay={index * 0.05} className="h-full">
+                <motion.div
+                  className="flex h-full flex-col overflow-hidden rounded-2xl border-2 border-black bg-white neo-shadow group/card dark:border-white dark:bg-slate-800"
+                >
                 {/* IMAGE PORTRAIT */}
-                <div className="relative w-full h-64 border-b-2 border-black dark:border-white overflow-hidden">
+                <div className="group/image relative h-64 w-full overflow-hidden border-b-2 border-black dark:border-white">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover grayscale-[35%] contrast-[1.05] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-out"
+                    className="object-cover grayscale-[35%] contrast-[1.05] group-hover/image:grayscale-0 group-hover/image:scale-110 transition-all duration-500 ease-out"
                   />
 
                   {/* shine sweep — kilau diagonal nyapu pas hover */}
                   <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
-                    <div className="absolute -inset-y-8 -left-1/3 w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/45 to-transparent -translate-x-[120%] group-hover:translate-x-[420%] transition-transform duration-[900ms] ease-out" />
+                    <div className="absolute -inset-y-8 -left-1/3 w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/45 to-transparent -translate-x-[120%] group-hover/image:translate-x-[420%] transition-transform duration-[900ms] ease-out" />
                   </div>
 
                   {/* colored glow ring pas hover */}
-                  <div className="pointer-events-none absolute inset-0 z-10 ring-0 group-hover:ring-4 ring-inset ring-emerald-400/70 transition-all duration-300" />
+                  <div className="pointer-events-none absolute inset-0 z-10 ring-0 group-hover/image:ring-4 ring-inset ring-emerald-400/70 transition-all duration-300" />
 
                   {/* overlay + CTA */}
-                  <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-5">
-                    <span className="text-white font-bold border-2 border-white px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <div className="absolute inset-0 z-20 flex items-end justify-center bg-gradient-to-t from-black/70 via-black/20 to-transparent pb-5 opacity-0 transition-opacity duration-300 group-hover/image:opacity-100">
+                    <span className="translate-y-4 transform rounded-full border-2 border-white px-4 py-2 font-bold text-white transition-transform duration-300 group-hover/image:translate-y-0">
                       {t.viewProject}
                     </span>
                   </div>
@@ -81,7 +82,7 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <h4 className="text-lg font-bold mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors dark:text-white">
+                  <h4 className="mb-2 text-lg font-bold transition-colors group-hover/card:text-emerald-600 dark:text-white dark:group-hover/card:text-emerald-400">
                     {project.title}
                   </h4>
 
@@ -96,20 +97,24 @@ export default function Projects() {
                     {t.detail}
                   </Link>
                 </div>
-              </motion.div>
-            </TiltCard>
-          </ScrollReveal>
+                </motion.div>
+            </ScrollReveal>
+          </motion.div>
         ))}
+        </AnimatePresence>
       </div>
 
       {projects.length > 3 && (
         <div className="mt-12 text-center">
-          <button
+          <motion.button
             onClick={() => setShowAll(!showAll)}
+            whileHover={reduceMotion ? undefined : { y: -3, scale: 1.03 }}
+            whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 340, damping: 20 }}
             className="bg-white dark:bg-slate-800 border-2 border-black dark:border-white px-8 py-3 rounded-full font-bold neo-shadow hover:bg-gray-100 dark:hover:bg-slate-700 transition-all dark:text-white"
           >
             {showAll ? t.showLess : t.showAll}
-          </button>
+          </motion.button>
         </div>
       )}
     </section>

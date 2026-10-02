@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
@@ -47,6 +47,9 @@ export default function Navbar() {
         {/* Hamburger Button (Mobile Only) */}
         <button 
           className="md:hidden order-1 z-50 text-black dark:text-white"
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -113,17 +116,20 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, y: -12, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -8, scale: 0.98 }}
+          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          id="mobile-navigation"
           className="md:hidden mt-4 bg-white dark:bg-slate-800 dark:border-white border-2 border-black rounded-2xl neo-shadow p-6 flex flex-col gap-5 pointer-events-auto transition-colors duration-300"
         >
           {menuLinks}
         </motion.div>
       )}
+      </AnimatePresence>
     </nav>
   );
 }

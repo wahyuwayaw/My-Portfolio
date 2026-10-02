@@ -1,5 +1,5 @@
 "use client";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 /**
@@ -13,6 +13,7 @@ export default function ScrollReveal({
   className = "",
 }) {
   const ref = useRef(null);
+  const reduceMotion = useReducedMotion();
   const isInView = useInView(ref, {
     once: true,
     amount: 0.05,
@@ -26,7 +27,7 @@ export default function ScrollReveal({
     return () => clearTimeout(t);
   }, []);
 
-  const show = isInView || forceVisible;
+  const show = reduceMotion || isInView || forceVisible;
 
   const offsetY = direction === "up" ? 28 : direction === "down" ? -28 : 0;
   const offsetX = direction === "left" ? 28 : direction === "right" ? -28 : 0;
@@ -34,16 +35,16 @@ export default function ScrollReveal({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: offsetY, x: offsetX }}
+      initial={reduceMotion ? false : { opacity: 0, y: offsetY, x: offsetX }}
       animate={
         show
           ? { opacity: 1, y: 0, x: 0 }
           : { opacity: 0, y: offsetY, x: offsetX }
       }
-      transition={{
-        duration: 0.45,
+      transition={reduceMotion ? { duration: 0 } : {
+        duration: 0.65,
         delay: Math.min(delay, 0.25),
-        ease: "easeOut",
+        ease: [0.22, 1, 0.36, 1],
       }}
       className={className}
       style={{ willChange: "opacity, transform" }}

@@ -1,15 +1,21 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export default function CursorTrail() {
   const [particles, setParticles] = useState([]);
   const particleIdRef = useRef(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion || window.matchMedia("(pointer: coarse)").matches) return;
+
     let lastTime = 0;
     const throttleDelay = 30; // Only create particle every 30ms
 
     const handleMouseMove = (e) => {
+      if (e.target instanceof Element && e.target.closest("#projects")) return;
+
       const now = Date.now();
       if (now - lastTime < throttleDelay) return;
       
@@ -21,7 +27,7 @@ export default function CursorTrail() {
         y: e.clientY,
       };
 
-      setParticles((prev) => [...prev, newParticle]);
+      setParticles((prev) => [...prev.slice(-11), newParticle]);
 
       // Remove particle after animation
       setTimeout(() => {
@@ -31,7 +37,7 @@ export default function CursorTrail() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [reduceMotion]);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50">

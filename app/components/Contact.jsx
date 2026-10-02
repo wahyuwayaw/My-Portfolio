@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiTelegramFill } from "react-icons/ri";
@@ -57,6 +57,7 @@ const socialLinks = [
 
 export default function Contact() {
   const { language } = useLanguage();
+  const reduceMotion = useReducedMotion();
   const t = translations[language].contact;
 
   return (
@@ -80,19 +81,25 @@ export default function Contact() {
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ 
+              viewport={{ once: true, amount: 0.3 }}
+              transition={reduceMotion ? { duration: 0 } : {
                 duration: 0.5, 
                 delay: index * 0.08,
-                ease: "easeOut" 
+                ease: [0.22, 1, 0.36, 1]
               }}
-              whileHover={{ y: -8, scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={reduceMotion ? undefined : { y: -8, scale: 1.05 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.95 }}
               className={`${social.bgColor} dark:bg-slate-800 ${social.hoverBg} border-2 border-black dark:border-white rounded-xl p-6 neo-shadow flex flex-col items-center gap-3 transition-all duration-300 group`}
             >
-              <Icon className={`text-4xl ${social.iconColor} dark:text-white ${social.hoverIcon} transition-colors duration-300`} />
+              <motion.span
+                className="inline-flex"
+                animate={reduceMotion ? undefined : { y: [0, -3, 0] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.16 }}
+              >
+                <Icon className={`text-4xl ${social.iconColor} dark:text-white ${social.hoverIcon} transition-colors duration-300`} />
+              </motion.span>
               <span className="font-bold text-sm text-gray-800 dark:text-gray-200 group-hover:text-white transition-colors">
                 {social.name}
               </span>
