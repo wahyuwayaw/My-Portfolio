@@ -135,7 +135,7 @@ export default function Hero({ onNavClick }) {
         </motion.div>
       </div>
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-[3.5rem] z-[5] md:hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-1 z-[5] md:hidden">
         <motion.div
           animate={reduceMotion ? undefined : { y: [0, -5, 0], rotate: [-2, -1, -2] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
@@ -152,7 +152,7 @@ export default function Hero({ onNavClick }) {
         <motion.div
           animate={reduceMotion ? undefined : { y: [0, 5, 0], rotate: [2, 1, 2] }}
           transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[3%] top-6 w-[37%] rounded-xl border-2 border-emerald-700/30 bg-white/90 px-2.5 py-2 text-left shadow-[4px_4px_0_rgba(59,130,246,0.36)] backdrop-blur dark:border-emerald-300/40 dark:bg-slate-900/90"
+          className="absolute right-[3%] top-3 w-[37%] rounded-xl border-2 border-emerald-700/30 bg-white/90 px-2.5 py-2 text-left shadow-[4px_4px_0_rgba(59,130,246,0.36)] backdrop-blur dark:border-emerald-300/40 dark:bg-slate-900/90"
         >
           <div className="mb-1.5 flex items-center gap-1 text-[9px] font-black uppercase tracking-wide text-slate-800 dark:text-white"><Sparkles size={12} className="shrink-0 text-emerald-500" /><span className="truncate">{showcaseCopy.stack}</span></div>
           <div className="flex flex-wrap gap-1 text-[8px] font-bold">
