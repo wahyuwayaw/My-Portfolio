@@ -135,7 +135,7 @@ export default function Hero({ onNavClick }) {
         </motion.div>
       </div>
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-1 z-[5] md:hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 -top-16 z-[5] md:hidden">
         <motion.div
           animate={reduceMotion ? undefined : { y: [0, -5, 0], rotate: [-2, -1, -2] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
